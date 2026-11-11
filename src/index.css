@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  /* Glowing Neon Borders */
+  .neon-border-emerald {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2), inset 0 0 15px rgba(16, 185, 129, 0.1);
+  }
+  .neon-border-cyan {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2), inset 0 0 15px rgba(6, 182, 212, 0.1);
+  }
+
+  /* Cyber Grid Mesh Background */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  /* Bioluminescent Radial Glow */
+  .bio-glow {
+    background: radial-gradient(circle 800px at var(--glow-x, 50%) var(--glow-y, 50%), rgba(16, 185, 129, 0.08) 0%, transparent 80%);
+  }
+
+  /* Strict Video Fit (Contain, No Crop, No Zoom, Proportional Aspect Ratio) */
+  .video-fit-contain {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+}
+
+/* Slide-up sheet/modal animation for end-of-video available triggers */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom continuous scrolling scanline */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(52, 211, 153, 0.4), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
+
+/* Glowing text in monochrome */
+.text-glow-emerald {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Scrollbar Styles in monochrome */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(18, 18, 18, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(160, 160, 160, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 240, 240, 0.7);
+}
